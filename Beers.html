@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Cerveja</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Cerveja</h1>
+    <form Cerveja="">
+        <label for="calculator">Selecione o tipo</label><br>
+        <select id="calculator1">
+            <option value = "269">269ml</option>
+            <option value = "330">330ml</option>
+            <option value = "350" selected>350ml</option>
+            <option value = "355">355ml</option>
+            <option value = "473">473ml</option>
+            <option value = "550">550ml</option>
+            <option value = "600">600ml</option>
+            <option value = "750">750ml</option>
+            <option value = "1000">1000ml</option>
+        </select>
+
+        <select id="calculator2">
+            <option value = "269">269ml</option>
+            <option value = "330">330ml</option>
+            <option value = "350">350ml</option>
+            <option value = "355">355ml</option>
+            <option value = "473" selected>473ml</option>
+            <option value = "550">550ml</option>
+            <option value = "600">600ml</option>
+            <option value = "750">750ml</option>
+            <option value = "1000">1000ml</option>
+        </select>
+        
+        <button type="button" onclick="inverter()">Inverter</button><br><br>
+
+        <label for="number">Selecione a quantidade</label><br>
+        <input type="number" id="quantidade1" min="1" max="50" value="6">
+
+        <button type="button" onclick="calcular()">Calcular</button>
+    
+
+  <p id="resultado"></p>
+          </form>
+
+          <script>
+            function calcular(){
+                let cerveja1 = parseInt(document.getElementById("calculator1").value);
+                let cerveja2 = parseInt(document.getElementById("calculator2").value);
+                let qtd1 = parseInt(document.getElementById("quantidade1").value) || 0;
+
+                let calculo1 = cerveja1 * qtd1;
+                let calculo2 = cerveja2 * qtd1;
+                let calculo3 = (calculo1 / cerveja2).toFixed(1);
+
+
+                document.getElementById("resultado").innerHTML = //
+                   qtd1 + " latas de " + cerveja1 + " ml são " + calculo1 + " ml.<br>"//
+                 + calculo3 + " latas de " + cerveja2 + "ml são o equivalente.<br><br>"//
+                 + qtd1 + " latas de " + cerveja2 + " ml são " + calculo2 + " ml.<br>"//
+
+
+            }
+
+        function inverter() {
+                let select1 = document.getElementById("calculator1");
+                let select2 = document.getElementById("calculator2");
+
+                let temp = select1.value;
+                select1.value = select2.value;
+                select2.value = temp;
+
+      calcular(); // já atualiza o cálculo após inverter
+    }
+
+            document.getElementById("calculator1").addEventListener("change", calcular);
+            document.getElementById("calculator2").addEventListener("change", calcular);
+            document.getElementById("quantidade1").addEventListener("input", calcular);
+          </script>
+
+
+</body>
+</html>
